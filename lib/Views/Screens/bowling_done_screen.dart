@@ -2,6 +2,9 @@ import 'package:bowling_app/constant/asset_path.dart';
 import 'package:bowling_app/style/k_color.dart';
 import 'package:bowling_app/style/k_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import '../../model/data_consumption.dart';
+import 'data_cart.dart';
 
 class BowlingDoneScreen extends StatefulWidget {
   const BowlingDoneScreen({Key? key}) : super(key: key);
@@ -80,6 +83,39 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
 
   int selectedValue = 0;
 
+  final List<DataConsumption> data = [
+    DataConsumption(
+      number: '1',
+      dataInGb: 10,
+      barColor: charts.ColorUtil.fromDartColor(kcolor.purple),
+    ),
+    DataConsumption(
+      number: '3',
+      dataInGb: 10,
+      barColor: charts.ColorUtil.fromDartColor(kcolor.purple),
+    ),
+    DataConsumption(
+      number: '5',
+      dataInGb: 8,
+      barColor: charts.ColorUtil.fromDartColor(kcolor.purple),
+    ),
+    DataConsumption(
+      number: '7',
+      dataInGb: 6,
+      barColor: charts.ColorUtil.fromDartColor(kcolor.purple),
+    ),
+    DataConsumption(
+      number: '8',
+      dataInGb: 2,
+      barColor: charts.ColorUtil.fromDartColor(kcolor.purple),
+    ), 
+    DataConsumption(
+      number: '9',
+      dataInGb: 4,
+      barColor: charts.ColorUtil.fromDartColor(kcolor.purple),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +159,7 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
                 //pinned: true,
                 floating: false,
                 elevation: 0.0,
-                backgroundColor: Colors.transparent,
+                backgroundColor: kcolor.background,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Column(
                     children: [
@@ -133,7 +169,7 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
                             height: 164,
                             width: 414,
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
+                                color: kcolor.background,
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
@@ -261,7 +297,7 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
                     isScrollable: true,
                     indicatorColor: Colors.yellow,
                     unselectedLabelColor: Color(0xffB9B9BB),
-                    indicatorSize:TabBarIndicatorSize.label,
+                    indicatorSize: TabBarIndicatorSize.label,
                     tabs: [
                       Tab(text: 'Batting'),
                       Tab(text: 'Bowling'),
@@ -271,7 +307,7 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
               ),
               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 1500,
+                  height: 1570,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -641,9 +677,8 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
                         ),
                       ),
                       Theme(
-                        data: Theme.of(context).copyWith(
-                            unselectedWidgetColor: kcolor.white
-                            ),
+                        data: Theme.of(context)
+                            .copyWith(unselectedWidgetColor: kcolor.white),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -673,6 +708,55 @@ class _BowlingDoneScreenState extends State<BowlingDoneScreen> {
                             ),
                           ],
                         ),
+                      ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
+                      Row(
+                        children: [
+                          // Column(
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: [
+                          //     Container(
+                          //       margin: const EdgeInsets.only(left: 15),
+                          //       height: 44,
+                          //       width: 1,
+                          //       color: Colors.white.withOpacity(0.2),
+                          //     ),
+                          //     const SizedBox(
+                          //       height: 8,
+                          //     ),
+                          //     Container(
+                          //       margin: const EdgeInsets.only(left: 6),
+                          //       child: RotatedBox(
+                          //         quarterTurns: -1,
+                          //         child: Text('Over Count',
+                          //             style: TextStyle(
+                          //                 fontSize: 12,
+                          //                 fontWeight: FontWeight.w400,
+                          //                 fontStyle: FontStyle.normal,
+                          //                 color:
+                          //                     kcolor.white.withOpacity(0.6))),
+                          //       ),
+                          //     ),
+                          //     const SizedBox(
+                          //       height: 8,
+                          //     ),
+                          //     Container(
+                          //       margin: const EdgeInsets.only(left: 15),
+                          //       height: 44,
+                          //       width: 1,
+                          //       color: Colors.white.withOpacity(0.2),
+                          //     ),
+                          //   ],
+                          // ),
+                          Expanded(
+                            child: DataChart(
+                              data: data,
+                            ),
+                            
+                          ),
+                        ],
                       )
                     ],
                   ),

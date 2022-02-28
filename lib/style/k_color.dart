@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
    static final Color coral = Color(0xFFFF9B71); 
    static final Color sub = Color(0xFFFFFEFD); 
    static final Color radiotext = Color(0xFFB9B9BB); 
+   static final Color purple = Color(0xFFCA75C0); 
+   static final Color dry = Color(0xFFB9B9BB); 
+   static final Color green = Color(0xFF3CB733); 
    
    
  }
